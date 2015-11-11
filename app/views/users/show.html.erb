@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Profile Page and Creating New Secret</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+</head>
+	<style>
+		body {
+			background-image: url(http://www.googlecover.com/_asset/_cover/Bokeh-Light_739.jpg);
+			background-size: cover;
+		}
+	</style>
+
+<body>
+<div class="col-sm-12">
+	<h1 class="animated fadeInDownBig" style="text-shadow:4px 4px 3px; margin-left:200px"><font size="30">Anonymous Secrets</font></h1>
+		<h1><strong>Hello, <%= @user.name  %>  </strong></h1>
+	<div class="post_a_secret animated pulse" style="padding-left:35px">
+		<h4>Post A Secret</h4>
+		<form method="post" action="/users/<%= @user.id %>"</form>
+			<input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+			<textarea name="secret[content]" rows="8" cols="80" ></textarea>
+			<button class="btn btn-info">Create Secret</button>               
+		</form>
+		<a href="/secrets">Show All Anonymous Secrets</a>
+	</div>
+</div>
+
+<div class="my_secrets col-sm-6">
+	<h3>My Secrets</h3>
+	<% @secret.each do |secret| %>
+		<form method="post" action="/users/<%= secret.id %>">
+			<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+			<input type="hidden" name="_method" value="delete">
+			<p><img src="http://forum.pbfortress.com/uploads/jawards/Star_(1).png"> <%= secret.content %> <button>Delete</button></p>
+		</form>
+	<% end %>
+</div>
+
+<div class="liked_secret col-sm-6">
+	<h3>Secrets Liked</h3>
+	<% @sec.each do |s| %>
+		<p><img src="http://cdn.shopify.com/s/files/1/0043/6932/files/contest-like-icon_small.png?1280045106"> <%= s.content %></p>
+	<% end %>
+</div>
+
+</body>
+</html>

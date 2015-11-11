@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Login and Registration</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="assets/animate.css">
+</head>
+	<style>
+		body {
+			background-image: url(http://holidays.besthdwalls.com/wp-content/uploads/2012/10/Abstract-light.jpg);
+			background-size: cover;
+		}
+	</style>
+<body>
+
+<div class="container" style="width:850px; margin-top:60px">
+<div class="col-lg-12 text-center animated rubberBand" style="color:black"><strong><font size="300" face="Comic Sans MS">Anonymous Secrets</font></strong></div>
+	<div class="register col-sm-6 animated slideInLeft" style="width:400px">
+		<h1 style="color:black"><strong>Register</strong></h1>
+
+		<form action="/users" method="post">
+			<input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+
+			<label for="name">Name: </label>
+			<input type="text" name="users[name]" id="name" class="form-control">
+
+			<label for="email">Email: </label>
+			<input type="text" name="users[email]" id="email" class="form-control">
+
+			<label for="password">Password: </label>
+			<input type="password" name="users[password]" id="password" class="form-control">
+
+			<label for="name">Password Confirmation: </label>
+			<input type="password" name="users[password_confirmation]"class="form-control"><br>
+
+			<button class="btn btn-info form-control">Register</button>
+		</form>	
+	</div>
+	<div class="login col-sm-6 animated slideInRight" style="width:400px">
+		<h1 style="color:black"><strong>Login</strong></h1>
+		<form action="/sessions" method="post">
+			<input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+
+			<label>Email: </label>
+			<input type="text" name="sessions[email]" class="form-control">
+
+			<label>Password: </label>
+			<input type="password" name="sessions[password]" class="form-control"><br>
+
+			<button class="btn btn-success form-control">Login</button>
+		</form>
+	</div>
+</div>
+
+
+</body>
+</html>
